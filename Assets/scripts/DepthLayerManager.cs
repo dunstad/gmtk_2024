@@ -36,5 +36,12 @@ public class DepthLayerManager : MonoBehaviour
             float z = sprite.gameObject.transform.position.z;
             sprite.sortingOrder = (int) Math.Round(z * -100, 0);
         }
+
+        UnityEngine.Tilemaps.TilemapRenderer[] tilemaps = FindObjectsOfType<UnityEngine.Tilemaps.TilemapRenderer>();
+        UnityEngine.Tilemaps.TilemapRenderer[] sortedtilemaps = tilemaps.OrderBy((s) => s.gameObject.transform.position.z).ToArray();
+        foreach (UnityEngine.Tilemaps.TilemapRenderer tilemap in tilemaps) {
+            float z = tilemap.gameObject.transform.position.z;
+            tilemap.sortingOrder = (int) Math.Round(z * -100, 0);
+        }
     }
 }
