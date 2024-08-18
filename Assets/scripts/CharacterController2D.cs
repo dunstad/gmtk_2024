@@ -12,7 +12,7 @@ public class CharacterController2D : MonoBehaviour
     public float unpuffedSpeedCap;
     public float puffedAcceleration;
     public float puffedSpeedCap;
-    private bool puffed = false;
+    public bool puffed = false;
     public GameObject unpuffedVisuals;
     public GameObject puffedVisuals;
     public Vector2 lastCheckpointPos;

@@ -26,7 +26,6 @@ public class LightBeamAnimation : MonoBehaviour
     IEnumerator Animate()
     {
         while (true) {
-            // gameObject.GetComponent<Light2D>().intensity = Mathf.Abs(Mathf.Sin((Time.time  + (transform.position.x) / distanceShiftDecreaser) / animationSlower));
             gameObject.GetComponent<Light2D>().intensity = (Mathf.Sin((Time.time  + (transform.position.x) / distanceShiftDecreaser) / animationSlower) + 1) / intensityDecreaser;
             yield return null;
         }
