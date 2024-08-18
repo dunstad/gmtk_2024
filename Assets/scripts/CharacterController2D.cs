@@ -20,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
     private CircleCollider2D puffedCollider;
     public float timeToUnpuff;
     public GameObject puffParticlePrefab;
+    public GameObject deathParticlePrefab;
     public AudioSource puffSound;
 
     // Start is called before the first frame update
@@ -95,6 +96,10 @@ public class CharacterController2D : MonoBehaviour
     public void Die()
     {
         Debug.Log("X_X");
+        Instantiate(puffParticlePrefab, rb.position, transform.rotation);
+        Instantiate(deathParticlePrefab, rb.position, transform.rotation);
+        SetPuffed(false);
         rb.position = lastCheckpointPos;
+        rb.velocity = Vector2.zero;
     }
 }
