@@ -8,6 +8,7 @@ public class LightBeamAnimation : MonoBehaviour
     IEnumerator animate;
     public float animationSlower;
     public float distanceShiftDecreaser;
+    public float intensityDecreaser;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +26,8 @@ public class LightBeamAnimation : MonoBehaviour
     IEnumerator Animate()
     {
         while (true) {
-            gameObject.GetComponent<Light2D>().intensity = Mathf.Abs(Mathf.Sin((Time.time  + (transform.position.x) / distanceShiftDecreaser) / animationSlower));
-            // transform.Rotate(new Vector3(0, 0, Mathf.Sin(Time.time) / 2));
-            // var newScale = originalScale * ((Mathf.Sin(Time.time) / 2) + 1.25f);
-            // transform.localScale = new Vector3(newScale, newScale, newScale);
+            // gameObject.GetComponent<Light2D>().intensity = Mathf.Abs(Mathf.Sin((Time.time  + (transform.position.x) / distanceShiftDecreaser) / animationSlower));
+            gameObject.GetComponent<Light2D>().intensity = (Mathf.Sin((Time.time  + (transform.position.x) / distanceShiftDecreaser) / animationSlower) + 1) / intensityDecreaser;
             yield return null;
         }
     }

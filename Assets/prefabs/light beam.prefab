@@ -95,5 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd4da00e902a284a802fcba14249586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSlower: 3
+  animationSlower: 2
   distanceShiftDecreaser: 3
+  intensityDecreaser: 1.5
