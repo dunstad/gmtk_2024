@@ -10,6 +10,7 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D rb;
     public float acceleration;
     public float speedCap;
+    public Vector2 lastCheckpointPos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class CharacterController2D : MonoBehaviour
 
         // so we can keep the fish enabled in the editor but prevent control until play is pressed
         gameObject.SetActive(false);
+        lastCheckpointPos = rb.position;
     }
 
     // Update is called once per frame
@@ -52,5 +54,11 @@ public class CharacterController2D : MonoBehaviour
     void OnFire(InputValue value)
     {
         Debug.Log("fire");
+    }
+
+    public void Die()
+    {
+        Debug.Log("X_X");
+        rb.position = lastCheckpointPos;
     }
 }
