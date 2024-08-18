@@ -48,4 +48,9 @@ public class CharacterController2D : MonoBehaviour
         }
         moveVec = v;
     }
+
+    void OnFire(InputValue value)
+    {
+        Debug.Log("fire");
+    }
 }
