@@ -39,7 +39,7 @@ public class CharacterController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
@@ -55,7 +55,10 @@ public class CharacterController2D : MonoBehaviour
             float clampedVerticalSpeed = Mathf.Clamp(rb.velocity.y, -speedCap, speedCap);
             float clampedHorizontalSpeed = Mathf.Clamp(rb.velocity.x, -speedCap, speedCap);
             rb.velocity = new Vector2(clampedHorizontalSpeed, clampedVerticalSpeed);
+
+            rb.rotation = Vector2.Angle(moveVec.x < 0 ? Vector2.up : Vector2.down, moveVec);
         }
+        transform.localScale = new Vector3(transform.localScale.x, moveVec.x < 0 ? -1 : 1, transform.localScale.z);
     }
 
     void OnMove(InputValue value)
