@@ -112,5 +112,10 @@ public class CharacterController2D : MonoBehaviour
         {
             fish.gameObject.SetActive(true);
         }
+
+        foreach (Eel eel in Object.FindObjectsByType<Eel>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            eel.gameObject.SetActive(true);
+        }
     }
 }

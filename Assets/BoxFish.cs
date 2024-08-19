@@ -33,7 +33,6 @@ public class BoxFish : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("X_X");
         Instantiate(puffParticlePrefab, transform.position, transform.rotation);
         Instantiate(deathParticlePrefab, transform.position, transform.rotation);
         gameObject.SetActive(false);
