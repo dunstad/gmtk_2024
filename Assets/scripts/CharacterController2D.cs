@@ -101,5 +101,10 @@ public class CharacterController2D : MonoBehaviour
         SetPuffed(false);
         rb.position = lastCheckpointPos;
         rb.velocity = Vector2.zero;
+
+        foreach (BoxFish fish in Object.FindObjectsByType<BoxFish>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            fish.gameObject.SetActive(true);
+        }
     }
 }
