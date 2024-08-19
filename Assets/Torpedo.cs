@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Torpedo : MonoBehaviour
 {
+    public float speed;
+    public float lifetime;
+    float spawnTime;
     public GameObject explosionParticlePrefab;
     Rigidbody2D target;
     // Start is called before the first frame update
     void Start()
     {
+        spawnTime = Time.time;
         target = FindObjectsByType<CharacterController2D>(FindObjectsSortMode.None)[0].GetComponent<Rigidbody2D>();
     }
 
@@ -20,9 +24,19 @@ public class Torpedo : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 moveVec = (target.position - new Vector2(transform.position.x, transform.position.y));
+        if (Time.time - spawnTime > lifetime)
+        {
+            Die();
+        }
+
+        Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 moveVec = (target.position - pos);
         moveVec.Normalize();
         transform.eulerAngles = (new Vector3(0, 0, Vector2.Angle(Vector2.up, moveVec) * (moveVec.x < 0 ? 1 : -1)));
+
+        // should probably be using a rigidbody but oh well
+        // would be nice to have the interpolation though
+        transform.position = Vector2.MoveTowards(pos, moveVec + pos, .1f * speed);
     }
 
     void Die()
