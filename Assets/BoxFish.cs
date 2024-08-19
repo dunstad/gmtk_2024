@@ -26,7 +26,7 @@ public class BoxFish : MonoBehaviour
     IEnumerator Animate()
     {
         while (true) {
-            transform.position = new Vector2(transform.position.x, startY + Mathf.Sin(Time.time) / 8 );
+            transform.position = new Vector2(transform.position.x, startY + Mathf.Sin(Time.time + transform.position.x) / 8 );
             yield return null;
         }
     }
