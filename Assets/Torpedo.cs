@@ -56,10 +56,11 @@ public class Torpedo : MonoBehaviour
     void Die()
     {
         Instantiate(explosionParticlePrefab, transform.position, transform.rotation);
-        AudioSource explosion = gameObject.GetComponent<AudioSource>();
-        explosion.Stop();
-        explosion.time = .5f;
-        explosion.Play();
+        AudioSource explosionSound = GameObject.FindWithTag("explosionSound").GetComponent<AudioSource>();
+        explosionSound.transform.position = transform.position;
+        explosionSound.Stop();
+        explosionSound.time = .5f;
+        explosionSound.Play();
         Destroy(gameObject);
     }
 
