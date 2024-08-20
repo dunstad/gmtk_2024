@@ -27,9 +27,12 @@ public class Checkpoint : MonoBehaviour
             CharacterController2D player = other.gameObject.GetComponent<CharacterController2D>();
             if (player)
             {
+                AudioSource sound = GetComponent<AudioSource>();
+                sound.time = .15f;
+                sound.Play();
                 player.lastCheckpointPos = new Vector2(transform.position.x, transform.position.y);
+                light.intensity = startingIntensity;
             }
-            light.intensity = startingIntensity;
         }
     }
 }
